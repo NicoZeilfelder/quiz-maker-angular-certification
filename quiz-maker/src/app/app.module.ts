@@ -7,6 +7,7 @@ import {RouterModule} from "@angular/router";
 import {QuizService} from "./services/quiz.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [QuizService],
   bootstrap: [AppComponent]

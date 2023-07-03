@@ -34,7 +34,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   public createQuiz(): void {
     this.subscriptions.push(this.quizService.getQuestions(this.selectedCategory, this.selectedDifficulty)
       .subscribe((data: Quiz) => {
-        this.questions = data.results;
+        this.questions = data.results
     }));
   }
 
