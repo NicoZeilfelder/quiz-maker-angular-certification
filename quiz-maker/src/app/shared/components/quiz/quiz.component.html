@@ -1,0 +1,8 @@
+<div *ngIf="questions.length > 0">
+  <div *ngFor="let question of questions">
+    <span class="row">{{question.question}}</span>
+    <div class="row">
+      <button *ngFor="let answer of getAllAnswers(question)">{{answer}}</button>
+    </div>
+  </div>
+</div>

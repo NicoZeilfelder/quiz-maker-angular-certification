@@ -20,7 +20,7 @@ export type Quiz = {
 
 export type Question = {
   category: string;
-  type: 'multiple' | 'single';
+  type: string;
   difficulty: Difficulty;
   question: string;
   correct_answer: string;

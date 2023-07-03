@@ -2,22 +2,25 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {QuizService} from "../../services/quiz.service";
 import {Category, Difficulty, Question, Quiz, TriviaCategories} from "../../model/quiz.model";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
+  selector: 'app-quiz-start-page',
+  templateUrl: './quiz-start-page.component.html',
+  styleUrls: ['./quiz-start-page.component.css']
 })
-export class QuizComponent implements OnInit, OnDestroy {
+export class QuizStartPageComponent implements OnInit, OnDestroy {
   public categories: Category[] = [];
   public difficulties: string[] = Object.values(Difficulty);
   public questions: Question[] = [];
+
   public selectedCategory!: number;
   public selectedDifficulty!: string;
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private quizService: QuizService) {
+  constructor(private quizService: QuizService,
+              private router: Router) {
   }
 
   public ngOnInit(): void {
@@ -27,15 +30,20 @@ export class QuizComponent implements OnInit, OnDestroy {
     }));
   }
 
-  public ngOnDestroy(): void {
-    this.subscriptions?.forEach((subscription: Subscription) => subscription?.unsubscribe());
-  }
-
   public createQuiz(): void {
     this.subscriptions.push(this.quizService.getQuestions(this.selectedCategory, this.selectedDifficulty)
       .subscribe((data: Quiz) => {
-        this.questions = data.results
+        this.questions = data.results;
     }));
   }
 
+
+
+  public submitQuiz(): void {
+    this.router.navigate(['results'])
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptions?.forEach((subscription: Subscription) => subscription?.unsubscribe());
+  }
 }
