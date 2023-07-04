@@ -26,3 +26,10 @@ export type Question = {
   correct_answer: string;
   incorrect_answers: string[];
 }
+
+export type CustomQuestion = {
+  question: string;
+  answers: string[];
+  correct_answer: string;
+  selected_answers: string[];
+}

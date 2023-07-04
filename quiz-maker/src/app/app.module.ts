@@ -15,7 +15,7 @@ import { QuizComponent } from './shared/components/quiz/quiz.component';
     AppComponent,
     QuizStartPageComponent,
     QuizResultPageComponent,
-    QuizComponent
+    QuizComponent,
   ],
   imports: [
     BrowserModule,
