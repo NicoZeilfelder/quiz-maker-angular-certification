@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-  <app-quiz [questions]="questions"></app-quiz>
+  <app-quiz [questions]="questions" (quizSubmitted)="submitQuiz($event)"></app-quiz>
 </div>
 
 

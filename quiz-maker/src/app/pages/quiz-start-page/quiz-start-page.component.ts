@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {QuizService} from "../../services/quiz.service";
-import {Category, Difficulty, Question, Quiz, TriviaCategories} from "../../model/quiz.model";
+import {Category, CustomQuestion, Difficulty, Question, Quiz, TriviaCategories} from "../../model/quiz.model";
 import {Router} from "@angular/router";
 
 @Component({
@@ -37,10 +37,9 @@ export class QuizStartPageComponent implements OnInit, OnDestroy {
     }));
   }
 
-
-
-  public submitQuiz(): void {
-    this.router.navigate(['results'])
+  public submitQuiz(customQuestions: CustomQuestion[]): void {
+    console.log(customQuestions)
+    // this.router.navigate(['results'])
   }
 
   public ngOnDestroy(): void {

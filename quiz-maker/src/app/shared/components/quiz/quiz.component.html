@@ -3,15 +3,19 @@
     <span class="row">{{customQuestion.question}}</span>
     <div class="row">
       <button *ngFor="let answer of customQuestion?.answers" (click)="selectAnswer(customQuestion.question, answer)"
-              [ngClass]="{isSelected: !isValidated && isAnswerSelected(customQuestion, answer),
-              isCorrect: isValidated && isAnswerCorrect(customQuestion, answer),
-              isFalse: isValidated && isAnswerSelected(customQuestion, answer) && !isAnswerCorrect(customQuestion, answer)}">
+              [ngClass]="{isSelected: !isSubmitted && isAnswerSelected(customQuestion, answer),
+              isCorrect: isSubmitted && isAnswerCorrect(customQuestion, answer),
+              isFalse: isSubmitted && isAnswerSelected(customQuestion, answer) && !isAnswerCorrect(customQuestion, answer)}">
         {{answer}}
       </button>
     </div>
   </div>
 </div>
 
-<div *ngIf="showSubmitButton()" class="row">
+<div *ngIf="isSubmitButtonVisible()" class="row">
   <button id="submit" (click)="submitQuiz()">Submit</button>
+</div>
+
+<div *ngIf="isSubmitted">
+  <span>You scored {{getNumberOfCorrectAnswers()}} / {{customQuestions?.length}}.</span>
 </div>
